@@ -81,3 +81,20 @@ WHERE district = 'California'
 
 
 -- ? Get a list of all the movies "Nick wahlberg" has been in. 
+
+-- My answer: 
+
+SELECT actor.actor_id, actor.first_name, actor.last_name, film.title, film_actor.film_id
+FROM actor
+LEFT JOIN film_actor ON film_actor.actor_id = actor.actor_id
+LEFT JOIN film ON film.film_id = film_actor.film_id
+WHERE actor.first_name = 'Nick' AND actor.last_name = 'Wahlberg';
+
+-- Other answer: 
+
+SELECT actor.first_name, actor.last_name, film.title
+FROM actor
+LEFT JOIN film_actor ON film_actor.actor_id = actor.actor_id
+LEFT JOIN film ON film.film_id = film_actor.film_id
+WHERE actor.first_name = 'Nick' AND actor.last_name = 'Wahlberg';
+
