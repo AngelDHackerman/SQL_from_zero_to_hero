@@ -51,8 +51,33 @@ SELECT film.film_id, title, inventory_id, store_id
 FROM film
 LEFT JOIN inventory 
 ON inventory.film_id = film.film_id
-WHERE inventory.film_id IS NULL
+WHERE inventory.film_id IS NULL  -- todo: this is for find elements that exist exclusively in the "film" table and NOT in the "inventory" table
 
 
   -- ! RIGHT OUTER JOINS
 
+-- this is pretty much like the left joins but in the oposite, also we can switch the position of the left join and it will do the same has the righ outer join
+
+
+
+      -- * Challange of the class
+
+-- ? What are the emails of the customers who live in California?
+
+-- My answer: 
+
+SELECT email, district, customer.address_id
+FROM customer
+LEFT OUTER JOIN address 
+ON address.address_id = customer.address_id
+WHERE address.district ILIKE 'california'
+
+-- Other option: 
+
+SELECT district, email FROM address
+INNER JOIN customer 
+ON customer.address_id = address.address_id
+WHERE district = 'California'
+
+
+-- ? Get a list of all the movies "Nick wahlberg" has been in. 
