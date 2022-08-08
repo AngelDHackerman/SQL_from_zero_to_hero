@@ -42,3 +42,24 @@ SELECT TO_CHAR(payment_date, 'dd-MM-YYYY')
 FROM payment;
 
 
+    -- ? Challenge of timestamps
+
+-- In which month the payment were done, and return the answer with the full name of the month
+
+SELECT DISTINCT (TO_CHAR(payment_date, 'MONTH'))
+FROM payment
+
+
+-- How many payments occurred on a Monday ? 
+
+-- ? TO_CHAR(payment_date, 'Day') returns a string padded with spaces ('Monday   '). To suppress the spaces, use the FM modifier ("fill mode")
+
+SELECT COUNT(*)
+FROM payment
+WHERE (TO_CHAR(payment_date, 'FMDay')) = 'Monday'
+
+-- * Another answer:
+
+SELECT COUNT(*)
+FROM payment
+WHERE EXTRACT(dow FROM payment_date) = 1 -- 0 = Sunday, 1 = Monday
