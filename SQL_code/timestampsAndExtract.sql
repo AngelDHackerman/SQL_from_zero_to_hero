@@ -58,7 +58,7 @@ SELECT COUNT(*)
 FROM payment
 WHERE (TO_CHAR(payment_date, 'FMDay')) = 'Monday'
 
--- * Another answer:
+-- * Another good answer:
 
 SELECT COUNT(*)
 FROM payment
