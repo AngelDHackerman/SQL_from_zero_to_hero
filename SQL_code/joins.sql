@@ -80,6 +80,8 @@ ON customer.address_id = address.address_id
 WHERE district = 'California'
 
 
+-- ! using 3 tables and therefore 2 left joins:
+
 -- ? Get a list of all the movies "Nick wahlberg" has been in. 
 
 -- My answer: 
@@ -98,3 +100,11 @@ LEFT JOIN film_actor ON film_actor.actor_id = actor.actor_id
 LEFT JOIN film ON film.film_id = film_actor.film_id
 WHERE actor.first_name = 'Nick' AND actor.last_name = 'Wahlberg';
 
+
+-- Return the title of the movies returned between 2005-05-29 and 2005-05-30
+
+SELECT inventory.inventory_id, rental.return_date, film.title
+FROM rental
+LEFT JOIN inventory ON inventory.inventory_id = rental.inventory_id
+LEFT JOIN film ON film.film_id = inventory.film_id
+WHERE return_date BETWEEN '2005-05-29' AND '2005-05-30'
