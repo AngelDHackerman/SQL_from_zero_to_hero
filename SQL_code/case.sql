@@ -67,3 +67,27 @@ SUM(
 	END
 ) AS premium 
 FROM film
+
+
+      -- Challange 
+
+SELECT
+SUM(
+	CASE rating
+		WHEN 'R' THEN 1
+		ELSE 0
+	END
+) AS R,
+SUM(
+	CASE rating
+		WHEN 'PG' THEN 1
+		ELSE 0
+	END
+) AS PG,
+SUM(
+	CASE rating
+		WHEN 'PG-13' THEN 1
+		ELSE 0
+	END
+) AS Pg13
+FROM film
